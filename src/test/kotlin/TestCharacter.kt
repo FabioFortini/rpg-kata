@@ -1,5 +1,6 @@
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
-import kotlin.test.assertEquals
 
 class TestCharacter {
     @Test
@@ -14,5 +15,12 @@ class TestCharacter {
         val character = Character()
 
         assertEquals(1, character.level)
+    }
+
+    @Test
+    fun `should be alive`() {
+        val character = Character()
+
+        assertTrue(character.alive)
     }
 }
