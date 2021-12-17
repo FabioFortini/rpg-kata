@@ -3,9 +3,12 @@ class Character {
         private set
 
     val level: Int = 1
-    val alive: Boolean = true
+    var alive: Boolean = true
+        private set
 
     fun receiveDamage(damage: Int) {
         health -= damage
+        if(health == 0)
+            alive = false
     }
 }
