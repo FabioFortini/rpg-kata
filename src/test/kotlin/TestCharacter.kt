@@ -8,4 +8,11 @@ class TestCharacter {
 
         assertEquals(1000, character.health)
     }
+
+    @Test
+    fun `should have 1 as level`() {
+        val character = Character()
+
+        assertEquals(1, character.level)
+    }
 }
