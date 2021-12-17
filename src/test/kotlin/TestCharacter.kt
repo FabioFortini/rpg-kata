@@ -29,6 +29,7 @@ class TestCharacter {
         val character = Character()
 
         character.receiveDamage(200)
-        assertEquals(800, character.health)
+        character.receiveDamage(200)
+        assertEquals(600, character.health)
     }
 }
