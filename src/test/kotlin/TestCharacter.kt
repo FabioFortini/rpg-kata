@@ -23,4 +23,12 @@ class TestCharacter {
 
         assertTrue(character.alive)
     }
+
+    @Test
+    fun `decrease health when received damage less than actual health`() {
+        val character = Character()
+
+        character.receiveDamage(200)
+        assertEquals(800, character.health)
+    }
 }
