@@ -8,7 +8,11 @@ class Character {
     fun receiveDamage(damage: Int) {
         health -= damage
         if(health <= 0)
-            health = 0
-            alive = false
+            killed()
+    }
+
+    private fun killed() {
+        health = 0
+        alive = false
     }
 }
