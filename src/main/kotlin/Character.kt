@@ -11,14 +11,16 @@ class Character {
             killed()
     }
 
+    fun heal(target: Character, health: Int) {
+        if(target.isDead())
+            return
+        target.health += health
+    }
+
+    private fun isDead() = !alive
+
     private fun killed() {
         health = 0
         alive = false
-    }
-
-    fun heal(target: Character, health: Int) {
-        if(!target.alive)
-            return
-        target.health += health
     }
 }
