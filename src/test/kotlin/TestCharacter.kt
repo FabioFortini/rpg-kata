@@ -42,4 +42,13 @@ class TestCharacter {
         assertEquals(0, character.health)
         assertFalse(character.alive)
     }
+
+    @Test
+    fun `die when received damage greather than health`() {
+        val character = Character()
+
+        character.receiveDamage(1500)
+        assertEquals(0, character.health)
+        assertFalse(character.alive)
+    }
 }
