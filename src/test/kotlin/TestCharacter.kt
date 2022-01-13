@@ -51,4 +51,26 @@ class TestCharacter {
         assertEquals(0, character.health)
         assertFalse(character.alive)
     }
+
+    @Test
+    fun `character heal another character`() {
+        val phabeeo = Character()
+        val marco = Character()
+        marco.receiveDamage(500)
+
+        phabeeo.heal(marco, 200)
+
+        assertEquals(700, marco.health)
+    }
+
+    @Test
+    fun `is not possible to heal a dead character`() {
+        val character = Character()
+        val deadCharacter = Character()
+        deadCharacter.receiveDamage(1000)
+
+        character.heal(deadCharacter, 1000)
+        assertEquals(0, deadCharacter.health)
+        assertFalse(deadCharacter.alive)
+    }
 }

@@ -15,4 +15,10 @@ class Character {
         health = 0
         alive = false
     }
+
+    fun heal(target: Character, health: Int) {
+        if(!target.alive)
+            return
+        target.health += health
+    }
 }
