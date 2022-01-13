@@ -64,6 +64,17 @@ class TestCharacter {
     }
 
     @Test
+    fun `character heal another character not over max health`() {
+        val phabeeo = Character()
+        val marco = Character()
+        marco.receiveDamage(500)
+
+        phabeeo.heal(marco, 800)
+
+        assertEquals(1000, marco.health)
+    }
+
+    @Test
     fun `is not possible to heal a dead character`() {
         val character = Character()
         val deadCharacter = Character()
