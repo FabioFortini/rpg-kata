@@ -1,3 +1,5 @@
+import java.lang.Integer.min
+
 class Character {
     var health: Int = 1000
         private set
@@ -14,7 +16,7 @@ class Character {
     fun heal(target: Character, health: Int) {
         if(target.isDead())
             return
-        target.health += health
+        target.health = min(target.health + health, 1000)
     }
 
     private fun isDead() = !alive
