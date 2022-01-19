@@ -1,7 +1,7 @@
 import java.lang.Integer.min
 
 class Character {
-    var health: Int = 1000
+    var health: Int = MAX_HEALTH
         private set
     var alive: Boolean = true
         private set
@@ -9,14 +9,14 @@ class Character {
 
     fun receiveDamage(damage: Int) {
         health -= damage
-        if(health <= 0)
+        if (health <= 0)
             killed()
     }
 
     fun heal(target: Character, health: Int) {
-        if(target.isDead())
+        if (target.isDead())
             return
-        target.health = min(target.health + health, 1000)
+        target.health = min(target.health + health, MAX_HEALTH)
     }
 
     private fun isDead() = !alive
@@ -24,5 +24,9 @@ class Character {
     private fun killed() {
         health = 0
         alive = false
+    }
+
+    companion object {
+        private const val MAX_HEALTH: Int = 1000
     }
 }
