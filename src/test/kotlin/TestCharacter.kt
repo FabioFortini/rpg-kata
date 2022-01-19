@@ -84,4 +84,10 @@ class TestCharacter {
         assertEquals(0, deadCharacter.health)
         assertFalse(deadCharacter.alive)
     }
+    @Test
+    fun `a character cannot deal damage to itself`() {
+        val character = Character()
+        character.dealDamage(character, 100)
+        assertEquals(1000, character.health)
+    }
 }

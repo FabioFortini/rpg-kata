@@ -26,6 +26,12 @@ class Character {
         alive = false
     }
 
+    fun dealDamage(character: Character, health: Int) {
+        if (this != character) {
+            character.receiveDamage(health)
+        }
+    }
+
     companion object {
         private const val MAX_HEALTH: Int = 1000
     }
