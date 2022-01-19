@@ -28,17 +28,19 @@ class TestCharacter {
     @Test
     fun `decrease health when received damage less than actual health`() {
         val character = Character()
+        val anotherCharacter = Character()
 
-        character.receiveDamage(200)
-        character.receiveDamage(200)
+        anotherCharacter.dealDamage(character, 200)
+        anotherCharacter.dealDamage(character, 200)
         assertEquals(600, character.health)
     }
 
     @Test
     fun `die when received damage equal to health`() {
         val character = Character()
+        val anotherCharacter = Character()
 
-        character.receiveDamage(1000)
+        anotherCharacter.dealDamage(character, 1000)
         assertEquals(0, character.health)
         assertFalse(character.alive)
     }
@@ -46,8 +48,9 @@ class TestCharacter {
     @Test
     fun `die when received damage greather than health`() {
         val character = Character()
+        val anotherCharacter = Character()
 
-        character.receiveDamage(1500)
+        anotherCharacter.dealDamage(character, 1500)
         assertEquals(0, character.health)
         assertFalse(character.alive)
     }
@@ -56,7 +59,8 @@ class TestCharacter {
     fun `character heal another character`() {
         val phabeeo = Character()
         val marco = Character()
-        marco.receiveDamage(500)
+
+        phabeeo.dealDamage(marco, 500)
 
         phabeeo.heal(marco, 200)
 
@@ -67,7 +71,7 @@ class TestCharacter {
     fun `character heal another character not over max health`() {
         val phabeeo = Character()
         val marco = Character()
-        marco.receiveDamage(500)
+        phabeeo.dealDamage(marco, 500)
 
         phabeeo.heal(marco, 800)
 
@@ -78,7 +82,7 @@ class TestCharacter {
     fun `is not possible to heal a dead character`() {
         val character = Character()
         val deadCharacter = Character()
-        deadCharacter.receiveDamage(1000)
+        character.dealDamage(deadCharacter, 1000)
 
         character.heal(deadCharacter, 1000)
         assertEquals(0, deadCharacter.health)
@@ -87,7 +91,9 @@ class TestCharacter {
     @Test
     fun `a character cannot deal damage to itself`() {
         val character = Character()
+
         character.dealDamage(character, 100)
+
         assertEquals(1000, character.health)
     }
 }

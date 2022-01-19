@@ -7,12 +7,6 @@ class Character {
         private set
     val level: Int = 1
 
-    fun receiveDamage(damage: Int) {
-        health -= damage
-        if (health <= 0)
-            killed()
-    }
-
     fun heal(target: Character, health: Int) {
         if (target.isDead())
             return
@@ -28,7 +22,9 @@ class Character {
 
     fun dealDamage(character: Character, health: Int) {
         if (this != character) {
-            character.receiveDamage(health)
+            character.health -= health
+            if (character.health <= 0)
+                character.killed()
         }
     }
 
