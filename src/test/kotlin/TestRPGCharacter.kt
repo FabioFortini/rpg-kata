@@ -101,4 +101,14 @@ class TestRPGCharacter {
 
         assertEquals(1000, character.health)
     }
+
+    @Test
+    fun `a character cannot heal other characters`() {
+        val target = RPGCharacter()
+        RPGCharacter().dealDamage(target, 500)
+
+        RPGCharacter().heal(target, 200)
+
+        assertEquals(500, target.health)
+    }
 }

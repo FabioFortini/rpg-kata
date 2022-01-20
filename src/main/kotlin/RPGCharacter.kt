@@ -8,6 +8,8 @@ class RPGCharacter {
     val level: Int = 1
 
     fun heal(target: RPGCharacter, health: Int) {
+        if (this != target)
+            return
         if (target.isDead())
             return
         target.health = min(target.health + health, MAX_HEALTH)
