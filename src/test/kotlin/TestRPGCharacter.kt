@@ -66,7 +66,7 @@ class TestRPGCharacter {
     fun `character can heal itself`() {
         val target = createCharacter(damageReceived = 500)
 
-        target.heal(target, 200)
+        target.heal(200)
 
         assertEquals(700, target.health)
     }
@@ -75,7 +75,7 @@ class TestRPGCharacter {
     fun `character cannot heal itself over max health`() {
         val target = createCharacter(damageReceived = 500)
 
-        target.heal(target, 800)
+        target.heal(800)
 
         assertEquals(1000, target.health)
     }
@@ -84,7 +84,7 @@ class TestRPGCharacter {
     fun `is not possible to heal a dead character`() {
         val deadCharacter = createCharacter(damageReceived = 1000)
 
-        deadCharacter.heal(deadCharacter, 1000)
+        deadCharacter.heal(1000)
 
         assertEquals(0, deadCharacter.health)
         assertFalse(deadCharacter.alive)
@@ -97,15 +97,6 @@ class TestRPGCharacter {
         character.dealDamage(character, 100)
 
         assertEquals(1000, character.health)
-    }
-
-    @Test
-    fun `a character cannot heal other characters`() {
-        val target = createCharacter(damageReceived = 500)
-
-        RPGCharacter().heal(target, 200)
-
-        assertEquals(500, target.health)
     }
 
     private fun createCharacter(damageReceived: Int): RPGCharacter {

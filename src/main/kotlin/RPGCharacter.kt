@@ -7,12 +7,11 @@ class RPGCharacter {
         private set
     val level: Int = 1
 
-    fun heal(target: RPGCharacter, health: Int) {
-        if (this != target)
+    fun heal(amount: Int) {
+        if (isDead())
             return
-        if (target.isDead())
-            return
-        target.health = min(target.health + health, MAX_HEALTH)
+
+        health = min(health + amount, MAX_HEALTH)
     }
 
     fun dealDamage(target: RPGCharacter, health: Int) {
