@@ -1,16 +1,26 @@
 import java.lang.Integer.min
 
-class Character {
+class RPGCharacter {
     var health: Int = MAX_HEALTH
         private set
     var alive: Boolean = true
         private set
     val level: Int = 1
 
-    fun heal(target: Character, health: Int) {
+    fun heal(target: RPGCharacter, health: Int) {
         if (target.isDead())
             return
         target.health = min(target.health + health, MAX_HEALTH)
+    }
+
+    fun dealDamage(target: RPGCharacter, health: Int) {
+        if (this == target) {
+            return
+        }
+
+        target.health -= health
+        if (target.health <= 0)
+            target.killed()
     }
 
     private fun isDead() = !alive
@@ -18,14 +28,6 @@ class Character {
     private fun killed() {
         health = 0
         alive = false
-    }
-
-    fun dealDamage(character: Character, health: Int) {
-        if (this != character) {
-            character.health -= health
-            if (character.health <= 0)
-                character.killed()
-        }
     }
 
     companion object {
