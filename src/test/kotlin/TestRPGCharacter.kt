@@ -26,32 +26,39 @@ class TestRPGCharacter {
     }
 
     @Test
-    fun `decrease health when received damage less than actual health`() {
-        val character = RPGCharacter()
-        val anotherCharacter = RPGCharacter()
+    fun `decrease health on each damage received`() {
+        val target = RPGCharacter()
 
-        anotherCharacter.dealDamage(character, 200)
-        anotherCharacter.dealDamage(character, 200)
-        assertEquals(600, character.health)
+        RPGCharacter().dealDamage(target, 200)
+        RPGCharacter().dealDamage(target, 200)
+
+        assertEquals(600, target.health)
+    }
+
+    @Test
+    fun `health becomes zero when damage greather than health`() {
+        val target = RPGCharacter()
+
+        RPGCharacter().dealDamage(target, 1100)
+
+        assertEquals(0, target.health)
     }
 
     @Test
     fun `die when received damage equal to health`() {
-        val character = RPGCharacter()
-        val anotherCharacter = RPGCharacter()
+        val target = RPGCharacter()
 
-        anotherCharacter.dealDamage(character, 1000)
-        assertEquals(0, character.health)
-        assertFalse(character.alive)
+        RPGCharacter().dealDamage(target, 1000)
+
+        assertFalse(target.alive)
     }
 
     @Test
     fun `die when received damage greather than health`() {
         val character = RPGCharacter()
-        val anotherRPGCharacter = RPGCharacter()
 
-        anotherRPGCharacter.dealDamage(character, 1500)
-        assertEquals(0, character.health)
+        RPGCharacter().dealDamage(character, 1500)
+
         assertFalse(character.alive)
     }
 
@@ -59,8 +66,7 @@ class TestRPGCharacter {
     fun `character heal another character`() {
         val phabeeo = RPGCharacter()
         val marco = RPGCharacter()
-
-        phabeeo.dealDamage(marco, 500)
+        RPGCharacter().dealDamage(marco, 500)
 
         phabeeo.heal(marco, 200)
 
@@ -71,7 +77,7 @@ class TestRPGCharacter {
     fun `character heal another character not over max health`() {
         val phabeeo = RPGCharacter()
         val marco = RPGCharacter()
-        phabeeo.dealDamage(marco, 500)
+        RPGCharacter().dealDamage(marco, 500)
 
         phabeeo.heal(marco, 800)
 
@@ -85,9 +91,11 @@ class TestRPGCharacter {
         character.dealDamage(deadCharacter, 1000)
 
         character.heal(deadCharacter, 1000)
+
         assertEquals(0, deadCharacter.health)
         assertFalse(deadCharacter.alive)
     }
+
     @Test
     fun `a character cannot deal damage to itself`() {
         val character = RPGCharacter()
