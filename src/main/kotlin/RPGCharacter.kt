@@ -27,6 +27,9 @@ class RPGCharacter(val level: Int = 1) {
         if (target.level - this.level >= 5) {
             return damage / 2
         }
+        if (this.level - target.level >= 5) {
+            return (damage * 1.5).toInt()
+        }
         return damage
     }
 
