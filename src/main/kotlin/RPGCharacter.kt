@@ -1,11 +1,11 @@
-import java.lang.Integer.min
+import kotlin.math.min
 
-class RPGCharacter {
+class RPGCharacter(initialLevel: Int = 1) {
     var health: Int = MAX_HEALTH
         private set
     var alive: Boolean = true
         private set
-    val level: Int = 1
+    val level: Int = initialLevel
 
     fun heal(amount: Int) {
         if (isDead())
@@ -14,14 +14,21 @@ class RPGCharacter {
         health = min(health + amount, MAX_HEALTH)
     }
 
-    fun dealDamage(target: RPGCharacter, health: Int) {
+    fun dealDamage(target: RPGCharacter, damage: Int) {
         if (this == target) {
             return
         }
 
-        target.health -= health
+        target.health -= calculateDamage(damage, target)
         if (target.health <= 0)
             target.killed()
+    }
+
+    private fun calculateDamage(damage: Int, target: RPGCharacter): Int {
+        if (target.level - this.level >= 5) {
+            return damage / 2
+        }
+        return damage
     }
 
     private fun isDead() = !alive

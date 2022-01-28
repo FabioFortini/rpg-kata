@@ -104,4 +104,15 @@ class TestRPGCharacter {
         RPGCharacter().dealDamage(target, damageReceived)
         return target
     }
+
+
+    @Test
+    fun `damage is reduced by 50% when target is 5 levels above`() {
+        val character = RPGCharacter()
+        val target = RPGCharacter(6)
+
+        character.dealDamage(target, 100)
+
+        assertEquals(950, target.health)
+    }
 }
