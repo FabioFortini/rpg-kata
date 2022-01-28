@@ -1,11 +1,10 @@
 import kotlin.math.min
 
-class RPGCharacter(initialLevel: Int = 1) {
+class RPGCharacter(val level: Int = 1) {
     var health: Int = MAX_HEALTH
         private set
     var alive: Boolean = true
         private set
-    val level: Int = initialLevel
 
     fun heal(amount: Int) {
         if (isDead())
