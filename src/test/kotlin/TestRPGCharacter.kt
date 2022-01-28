@@ -124,4 +124,14 @@ class TestRPGCharacter {
 
         assertEquals(850, target.health)
     }
+
+    @Test
+    fun `handle odd numbers in damage when target is 5 levels below`() {
+        val character = RPGCharacter(6)
+        val target = RPGCharacter()
+
+        character.dealDamage(target, 1)
+
+        assertEquals(998.5, target.health)
+    }
 }
