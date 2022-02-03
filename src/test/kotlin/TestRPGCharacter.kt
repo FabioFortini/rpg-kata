@@ -8,7 +8,7 @@ class TestRPGCharacter {
     fun `should have 1000 health`() {
         val character = RPGCharacter()
 
-        assertEquals(1000, character.health)
+        assertEquals(1000F, character.health)
     }
 
     @Test
@@ -32,7 +32,7 @@ class TestRPGCharacter {
         RPGCharacter().dealDamage(target, 200)
         RPGCharacter().dealDamage(target, 200)
 
-        assertEquals(600, target.health)
+        assertEquals(600F, target.health)
     }
 
     @Test
@@ -41,7 +41,7 @@ class TestRPGCharacter {
 
         RPGCharacter().dealDamage(target, 1100)
 
-        assertEquals(0, target.health)
+        assertEquals(0F, target.health)
     }
 
     @Test
@@ -68,7 +68,7 @@ class TestRPGCharacter {
 
         target.heal(200)
 
-        assertEquals(700, target.health)
+        assertEquals(700F, target.health)
     }
 
     @Test
@@ -77,7 +77,7 @@ class TestRPGCharacter {
 
         target.heal(800)
 
-        assertEquals(1000, target.health)
+        assertEquals(1000F, target.health)
     }
 
     @Test
@@ -86,7 +86,7 @@ class TestRPGCharacter {
 
         deadCharacter.heal(1000)
 
-        assertEquals(0, deadCharacter.health)
+        assertEquals(0F, deadCharacter.health)
         assertFalse(deadCharacter.alive)
     }
 
@@ -96,7 +96,7 @@ class TestRPGCharacter {
 
         character.dealDamage(character, 100)
 
-        assertEquals(1000, character.health)
+        assertEquals(1000F, character.health)
     }
 
     private fun createCharacter(damageReceived: Int): RPGCharacter {
@@ -112,7 +112,7 @@ class TestRPGCharacter {
 
         character.dealDamage(target, 100)
 
-        assertEquals(950, target.health)
+        assertEquals(950F, target.health)
     }
 
     @Test
@@ -122,16 +122,16 @@ class TestRPGCharacter {
 
         character.dealDamage(target, 100)
 
-        assertEquals(850, target.health)
+        assertEquals(850F, target.health)
     }
 
     @Test
     fun `handle odd numbers in damage when target is 5 levels below`() {
         val character = RPGCharacter(6)
-        val target = RPGCharacter()
+        val target = RPGCharacter(1)
 
         character.dealDamage(target, 1)
 
-        assertEquals(998.5, target.health)
+        assertEquals(998.5F, target.health)
     }
 }
