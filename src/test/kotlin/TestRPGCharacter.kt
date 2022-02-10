@@ -147,7 +147,7 @@ class TestRPGCharacter {
 
     @Test
     fun `Melee fighters have a range of 2 meters`() {
-        val melee = RPGCharacter()
+        val melee = MeleeCharacter()
 
         assertEquals(2, melee.maxRange)
     }

@@ -1,4 +1,1 @@
-class RangedCharacter : RPGCharacter(){
-    override val maxRange: Int = 20
-
-}
+class RangedCharacter : RPGCharacter(maxRange = 20)

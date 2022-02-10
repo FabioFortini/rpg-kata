@@ -1,15 +1,13 @@
 import kotlin.math.min
 
-open class RPGCharacter(val level: Int = 1) {
-    open val maxRange: Int = 2
+open class RPGCharacter(val level: Int = 1, val maxRange: Int = 2) {
     var health: Float = MAX_HEALTH
         private set
     var alive: Boolean = true
         private set
 
     fun heal(amount: Int) {
-        if (isDead())
-            return
+        if (isDead()) return
 
         health = min(health + amount, MAX_HEALTH)
     }
@@ -20,8 +18,7 @@ open class RPGCharacter(val level: Int = 1) {
         }
 
         target.health -= calculateDamage(damage, target)
-        if (target.health <= 0)
-            target.killed()
+        if (target.health <= 0) target.killed()
     }
 
     private fun calculateDamage(damage: Int, target: RPGCharacter): Float {

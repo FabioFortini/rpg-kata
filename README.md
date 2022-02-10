@@ -40,10 +40,10 @@ This is a fun kata that has the programmer building simple combat rules, as for 
 ## Iteration Three ##
 
 1. Characters have an attack Max Range.
-
-1. *Melee* fighters have a range of 2 meters.
+s have a range of 2 meters.
 
 1. *Ranged* fighters have a range of 20 meters.
+1. *Melee* fighter
 
 1. Characters must be in range to deal damage to a target.
 
