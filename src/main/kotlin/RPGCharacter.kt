@@ -1,7 +1,7 @@
 import kotlin.math.min
 
-class RPGCharacter(val level: Int = 1) {
-    val maxRange: Int = 2
+open class RPGCharacter(val level: Int = 1) {
+    open val maxRange: Int = 2
     var health: Float = MAX_HEALTH
         private set
     var alive: Boolean = true

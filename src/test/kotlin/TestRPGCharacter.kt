@@ -153,4 +153,11 @@ class TestRPGCharacter {
     }
 
 
+    @Test
+    fun `Ranged fighters have a range of 20 meters`() {
+        val range = RangedCharacter()
+
+        assertEquals(20, range.maxRange)
+    }
+
 }
