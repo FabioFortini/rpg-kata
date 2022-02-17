@@ -1,1 +1,1 @@
-class MeleeCharacter : RPGCharacter(maxRange = 2)
+class MeleeCharacter(position: Int) : RPGCharacter(maxRange = 2, position = position)

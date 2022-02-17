@@ -1,1 +1,1 @@
-class RangedCharacter : RPGCharacter(maxRange = 20)
+class RangedCharacter(position: Int) : RPGCharacter(maxRange = 20, position = position)

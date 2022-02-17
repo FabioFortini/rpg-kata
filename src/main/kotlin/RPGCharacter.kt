@@ -1,6 +1,6 @@
 import kotlin.math.min
 
-open class RPGCharacter(val level: Int = 1, val maxRange: Int = 2) {
+open class RPGCharacter(val level: Int = 1, val maxRange: Int = 2, val position: Int = 0) {
     var health: Float = MAX_HEALTH
         private set
     var alive: Boolean = true
@@ -14,6 +14,10 @@ open class RPGCharacter(val level: Int = 1, val maxRange: Int = 2) {
 
     fun dealDamage(target: RPGCharacter, damage: Int) {
         if (this == target) {
+            return
+        }
+
+        if (this.position + this.maxRange < target.position){
             return
         }
 

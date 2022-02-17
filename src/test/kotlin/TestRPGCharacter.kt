@@ -147,7 +147,7 @@ class TestRPGCharacter {
 
     @Test
     fun `Melee fighters have a range of 2 meters`() {
-        val melee = MeleeCharacter()
+        val melee = MeleeCharacter(0)
 
         assertEquals(2, melee.maxRange)
     }
@@ -155,9 +155,18 @@ class TestRPGCharacter {
 
     @Test
     fun `Ranged fighters have a range of 20 meters`() {
-        val range = RangedCharacter()
+        val range = RangedCharacter(100)
 
         assertEquals(20, range.maxRange)
     }
 
+    @Test
+    fun `Attacks must not be done outside max character range when target is in front`() {
+        val range = RangedCharacter(position = 100)
+        val melee = MeleeCharacter(position = 0)
+
+        melee.dealDamage(range, 100)
+
+        assertEquals(1000F, range.health)
+    }
 }
