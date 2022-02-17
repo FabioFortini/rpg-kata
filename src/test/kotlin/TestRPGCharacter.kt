@@ -162,11 +162,11 @@ class TestRPGCharacter {
 
     @Test
     fun `Attacks must not be done outside max character range when target is in front`() {
-        val range = RangedCharacter(position = 100)
-        val melee = MeleeCharacter(position = 0)
+        val attacker = RPGCharacter(maxRange=20, position = 0)
+        val target = RPGCharacter(position = 100)
 
-        melee.dealDamage(range, 100)
+        attacker.dealDamage(target, 100)
 
-        assertEquals(1000F, range.health)
+        assertEquals(1000F, target.health)
     }
 }
