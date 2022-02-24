@@ -174,6 +174,13 @@ class TestRPGCharacter {
         assertEquals(1000F, target.health)
     }
 
+    @Test
+    fun `Newly created character belongs to no faction`() {
+        val character = RPGCharacter()
+
+        assertEquals(emptyList<String>(), character.factions)
+    }
+
     private fun createCharacter(damageReceived: Int): RPGCharacter {
         val target = RPGCharacter()
         RPGCharacter().dealDamage(target, damageReceived)

@@ -2,6 +2,7 @@ import kotlin.math.abs
 import kotlin.math.min
 
 open class RPGCharacter(val level: Int = 1, val maxRange: Int = 2, val position: Int = 0) {
+    val factions: List<String> = emptyList()
     var health: Float = MAX_HEALTH
         private set
     var alive: Boolean = true
