@@ -17,6 +17,10 @@ open class RPGCharacter(val level: Int = 1, val maxRange: Int = 2, val position:
             return
         }
 
+        if (this.position - this.maxRange > target.position){
+            return
+        }
+
         if (this.position + this.maxRange < target.position){
             return
         }
