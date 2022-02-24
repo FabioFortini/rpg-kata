@@ -178,7 +178,7 @@ class TestRPGCharacter {
     fun `Newly created character belongs to no faction`() {
         val character = RPGCharacter()
 
-        assertEquals(emptyList<String>(), character.factions)
+        assertEquals(emptyList<String>(), character.factions())
     }
 
     @Test
@@ -187,7 +187,7 @@ class TestRPGCharacter {
 
         character.joinFaction("faction")
 
-        assertEquals(listOf("faction"), character.factions)
+        assertEquals(listOf("faction"), character.factions())
     }
 
     private fun createCharacter(damageReceived: Int): RPGCharacter {
