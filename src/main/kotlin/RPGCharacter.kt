@@ -2,7 +2,7 @@ import kotlin.math.abs
 import kotlin.math.min
 
 open class RPGCharacter(val level: Int = 1, val maxRange: Int = 2, val position: Int = 0) {
-    private var factions: MutableList<String> = mutableListOf()
+    private val factions: MutableList<String> = mutableListOf()
     var health: Float = MAX_HEALTH
         private set
     var alive: Boolean = true
@@ -55,7 +55,7 @@ open class RPGCharacter(val level: Int = 1, val maxRange: Int = 2, val position:
     }
 
     fun leaveFaction(faction: String) {
-        factions = mutableListOf()
+        factions.remove(faction)
     }
 
     companion object {
