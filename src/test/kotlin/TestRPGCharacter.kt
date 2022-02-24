@@ -99,12 +99,6 @@ class TestRPGCharacter {
         assertEquals(1000F, character.health)
     }
 
-    private fun createCharacter(damageReceived: Int): RPGCharacter {
-        val target = RPGCharacter()
-        RPGCharacter().dealDamage(target, damageReceived)
-        return target
-    }
-
     @Test
     fun `damage is reduced by 50% when target is 5 levels above`() {
         val character = RPGCharacter()
@@ -152,13 +146,13 @@ class TestRPGCharacter {
         assertEquals(2, melee.maxRange)
     }
 
-
     @Test
     fun `Ranged fighters have a range of 20 meters`() {
         val range = RangedCharacter(100)
 
         assertEquals(20, range.maxRange)
     }
+
 
     @Test
     fun `Attacks must not be done outside max character range when target is in front`() {
@@ -178,5 +172,11 @@ class TestRPGCharacter {
         attacker.dealDamage(target, 100)
 
         assertEquals(1000F, target.health)
+    }
+
+    private fun createCharacter(damageReceived: Int): RPGCharacter {
+        val target = RPGCharacter()
+        RPGCharacter().dealDamage(target, damageReceived)
+        return target
     }
 }

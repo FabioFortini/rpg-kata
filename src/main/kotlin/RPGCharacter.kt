@@ -1,3 +1,4 @@
+import kotlin.math.abs
 import kotlin.math.min
 
 open class RPGCharacter(val level: Int = 1, val maxRange: Int = 2, val position: Int = 0) {
@@ -17,17 +18,15 @@ open class RPGCharacter(val level: Int = 1, val maxRange: Int = 2, val position:
             return
         }
 
-        if (this.position - this.maxRange > target.position){
-            return
-        }
-
-        if (this.position + this.maxRange < target.position){
+        if (isNotInRange(target)){
             return
         }
 
         target.health -= calculateDamage(damage, target)
         if (target.health <= 0) target.killed()
     }
+
+    private fun isNotInRange(target: RPGCharacter) = abs(this.position - target.position) > this.maxRange
 
     private fun calculateDamage(damage: Int, target: RPGCharacter): Float {
         if (target.level - this.level >= 5) {
