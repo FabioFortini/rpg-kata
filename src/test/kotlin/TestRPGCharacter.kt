@@ -181,6 +181,15 @@ class TestRPGCharacter {
         assertEquals(emptyList<String>(), character.factions)
     }
 
+    @Test
+    fun `a character can join a faction`() {
+        val character = RPGCharacter()
+
+        character.joinFaction("faction")
+
+        assertEquals(listOf("faction"), character.factions)
+    }
+
     private fun createCharacter(damageReceived: Int): RPGCharacter {
         val target = RPGCharacter()
         RPGCharacter().dealDamage(target, damageReceived)
