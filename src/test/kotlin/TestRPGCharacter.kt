@@ -228,7 +228,7 @@ class TestRPGCharacter {
         characterA.joinFaction("faction")
         characterB.joinFaction("faction")
 
-        assertTrue(characterA.areAlliedTo(characterB));
+        assertTrue(characterA.isAlliedTo(characterB));
     }
 
     @Test
@@ -238,7 +238,7 @@ class TestRPGCharacter {
         characterA.joinFaction("factionA")
         characterB.joinFaction("factionB")
 
-        assertFalse(characterA.areAlliedTo(characterB));
+        assertFalse(characterA.isAlliedTo(characterB));
     }
 
     private fun createCharacter(damageReceived: Int): RPGCharacter {

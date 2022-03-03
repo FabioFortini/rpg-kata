@@ -3,6 +3,7 @@ import kotlin.math.min
 
 open class RPGCharacter(val level: Int = 1, val maxRange: Int = 2, val position: Int = 0) {
     private val factions: MutableList<String> = mutableListOf()
+    private val factionsManager: FactionsManager = FactionsManager();
     var health: Float = MAX_HEALTH
         private set
     var alive: Boolean = true
@@ -58,7 +59,7 @@ open class RPGCharacter(val level: Int = 1, val maxRange: Int = 2, val position:
         factions.remove(faction)
     }
 
-    fun areAlliedTo(characterB: RPGCharacter): Boolean {
+    fun isAlliedTo(characterB: RPGCharacter): Boolean {
         return factions == characterB.factions
     }
 
