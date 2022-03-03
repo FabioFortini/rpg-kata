@@ -221,6 +221,26 @@ class TestRPGCharacter {
         assertEquals(listOf("faction"), character.factions())
     }
 
+    @Test
+    fun `players belonging to the same Faction are considered Allies`() {
+        val characterA = RPGCharacter()
+        val characterB = RPGCharacter()
+        characterA.joinFaction("faction")
+        characterB.joinFaction("faction")
+
+        assertTrue(characterA.areAlliedTo(characterB));
+    }
+
+    @Test
+    fun `players belonging to the different Factions are not considered Allies`() {
+        val characterA = RPGCharacter()
+        val characterB = RPGCharacter()
+        characterA.joinFaction("factionA")
+        characterB.joinFaction("factionB")
+
+        assertFalse(characterA.areAlliedTo(characterB));
+    }
+
     private fun createCharacter(damageReceived: Int): RPGCharacter {
         val target = RPGCharacter()
         RPGCharacter().dealDamage(target, damageReceived)

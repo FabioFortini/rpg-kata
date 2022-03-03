@@ -58,6 +58,10 @@ open class RPGCharacter(val level: Int = 1, val maxRange: Int = 2, val position:
         factions.remove(faction)
     }
 
+    fun areAlliedTo(characterB: RPGCharacter): Boolean {
+        return factions == characterB.factions
+    }
+
     companion object {
         private const val MAX_HEALTH: Float = 1000F
     }
