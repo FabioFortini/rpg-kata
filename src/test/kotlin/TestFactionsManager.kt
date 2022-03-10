@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 
@@ -38,4 +39,14 @@ class TestFactionsManager {
         assertTrue(factionsManager.isCharacterMemberOf(character2, "faction"))
     }
 
+    @Test
+    fun `a character can join more than one faction`() {
+        val character = RPGCharacter()
+        val factionsManager = FactionsManager()
+
+        factionsManager.addCharacterToFaction(character, "faction1")
+        factionsManager.addCharacterToFaction(character, "faction2")
+
+        assertEquals(setOf("faction1","faction2"), factionsManager.factionsOf(character))
+    }
 }

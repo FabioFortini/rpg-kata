@@ -13,4 +13,8 @@ class FactionsManager {
         return factions[faction]?.contains(character) ?: false
     }
 
+    fun factionsOf(character: RPGCharacter): Set<String> {
+        return factions.keys.filter { faction -> isCharacterMemberOf(character, faction) }.toSet()
+    }
+
 }
