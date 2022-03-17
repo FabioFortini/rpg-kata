@@ -176,16 +176,6 @@ class TestRPGCharacter {
 
 
     @Test
-    fun `players belonging to the same Faction are considered Allies`() {
-        val characterA = RPGCharacter()
-        val characterB = RPGCharacter()
-        characterA.joinFaction("faction")
-        characterB.joinFaction("faction")
-
-        assertTrue(characterA.isAlliedTo(characterB));
-    }
-
-    @Test
     fun `players belonging to the different Factions are not considered Allies`() {
         val characterA = RPGCharacter()
         val characterB = RPGCharacter()

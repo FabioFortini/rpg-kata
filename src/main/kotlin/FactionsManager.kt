@@ -22,10 +22,8 @@ class FactionsManager {
     }
 
     fun areAllied(characterA: RPGCharacter, characterB: RPGCharacter): Boolean {
-        val factionsA = factionsOf(characterA)
-        val factionsB = factionsOf(characterB)
-        val intersect = factionsA.intersect(factionsB)
-        return intersect.isNotEmpty()
+        val sameFactions = factionsOf(characterA).intersect(factionsOf(characterB))
+        return sameFactions.isNotEmpty()
     }
 
 }
