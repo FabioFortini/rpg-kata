@@ -156,7 +156,7 @@ class TestRPGCharacter {
 
     @Test
     fun `Attacks must not be done outside max character range when target is in front`() {
-        val attacker = RPGCharacter(maxRange=20, position = 0)
+        val attacker = RPGCharacter(maxRange = 20, position = 0)
         val target = RPGCharacter(position = 100)
 
         attacker.dealDamage(target, 100)
@@ -166,7 +166,7 @@ class TestRPGCharacter {
 
     @Test
     fun `Attacks must not be done outside max character range when target is in behind`() {
-        val attacker = RPGCharacter(maxRange=20, position = 30)
+        val attacker = RPGCharacter(maxRange = 20, position = 30)
         val target = RPGCharacter(position = 0)
 
         attacker.dealDamage(target, 100)
@@ -174,16 +174,6 @@ class TestRPGCharacter {
         assertEquals(1000F, target.health)
     }
 
-
-    @Test
-    fun `players belonging to the different Factions are not considered Allies`() {
-        val characterA = RPGCharacter()
-        val characterB = RPGCharacter()
-        characterA.joinFaction("factionA")
-        characterB.joinFaction("factionB")
-
-        assertFalse(characterA.isAlliedTo(characterB));
-    }
 
     private fun createCharacter(damageReceived: Int): RPGCharacter {
         val target = RPGCharacter()

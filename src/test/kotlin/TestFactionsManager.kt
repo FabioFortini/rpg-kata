@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Test
 
 class TestFactionsManager {
@@ -92,7 +93,16 @@ class TestFactionsManager {
         assertTrue(factionsManager.areAllied(characterA, characterB));
     }
 
+    @Test
+    fun `players belonging to the different Factions are not considered Allies`() {
+        val characterA = RPGCharacter()
+        val characterB = RPGCharacter()
+        val factionsManager = FactionsManager()
+        factionsManager.addCharacterToFaction(characterA, "factionA")
+        factionsManager.addCharacterToFaction(characterB, "factionB")
 
+        assertFalse(factionsManager.areAllied(characterA, characterB));
+    }
 
 
 }
