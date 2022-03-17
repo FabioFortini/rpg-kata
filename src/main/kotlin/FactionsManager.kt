@@ -17,4 +17,15 @@ class FactionsManager {
         return factions.keys.filter { faction -> isCharacterMemberOf(character, faction) }.toSet()
     }
 
+    fun removeCharacterFromFaction(character: RPGCharacter, faction: String) {
+        factions[faction]?.remove(character)
+    }
+
+    fun areAllied(characterA: RPGCharacter, characterB: RPGCharacter): Boolean {
+        val factionsA = factionsOf(characterA)
+        val factionsB = factionsOf(characterB)
+        val intersect = factionsA.intersect(factionsB)
+        return intersect.isNotEmpty()
+    }
+
 }

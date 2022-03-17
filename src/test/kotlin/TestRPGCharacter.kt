@@ -174,52 +174,6 @@ class TestRPGCharacter {
         assertEquals(1000F, target.health)
     }
 
-    @Test
-    fun `Newly created character belongs to no faction`() {
-        val character = RPGCharacter()
-
-        assertEquals(emptyList<String>(), character.factions())
-    }
-
-    @Test
-    fun `a character can join a faction`() {
-        val character = RPGCharacter()
-
-        character.joinFaction("faction")
-
-        assertEquals(listOf("faction"), character.factions())
-    }
-
-    @Test
-    fun `a character can join more than one faction`() {
-        val character = RPGCharacter()
-
-        character.joinFaction("faction")
-        character.joinFaction("another faction")
-
-        assertEquals(listOf("faction", "another faction"), character.factions())
-    }
-
-    @Test
-    fun `a character can leave a faction`() {
-        val character = RPGCharacter()
-        character.joinFaction("faction")
-
-        character.leaveFaction("faction")
-
-        assertEquals(emptyList<String>(), character.factions())
-    }
-
-    @Test
-    fun `a character can leave one of multiple factions`() {
-        val character = RPGCharacter()
-        character.joinFaction("faction")
-        character.joinFaction("another faction")
-
-        character.leaveFaction("another faction")
-
-        assertEquals(listOf("faction"), character.factions())
-    }
 
     @Test
     fun `players belonging to the same Faction are considered Allies`() {

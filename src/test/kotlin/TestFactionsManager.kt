@@ -47,6 +47,52 @@ class TestFactionsManager {
         factionsManager.addCharacterToFaction(character, "faction1")
         factionsManager.addCharacterToFaction(character, "faction2")
 
-        assertEquals(setOf("faction1","faction2"), factionsManager.factionsOf(character))
+        assertEquals(setOf("faction1", "faction2"), factionsManager.factionsOf(character))
     }
+
+    @Test
+    fun `Newly created character belongs to no faction`() {
+        val character = RPGCharacter()
+        val factionsManager = FactionsManager()
+
+        assertEquals(emptySet<String>(), factionsManager.factionsOf(character))
+    }
+
+    @Test
+    fun `a character can leave a faction`() {
+        val character = RPGCharacter()
+        val factionsManager = FactionsManager()
+        factionsManager.addCharacterToFaction(character, "faction1")
+
+        factionsManager.removeCharacterFromFaction(character, "faction1")
+
+        assertEquals(emptySet<String>(), factionsManager.factionsOf(character))
+    }
+
+    @Test
+    fun `a character can leave one of multiple factions`() {
+        val character = RPGCharacter()
+        val factionsManager = FactionsManager()
+        factionsManager.addCharacterToFaction(character, "faction")
+        factionsManager.addCharacterToFaction(character, "another faction")
+
+        factionsManager.removeCharacterFromFaction(character, "another faction")
+
+        assertEquals(setOf("faction"), factionsManager.factionsOf(character))
+    }
+
+    @Test
+    fun `players belonging to the same Faction are considered Allies`() {
+        val characterA = RPGCharacter()
+        val characterB = RPGCharacter()
+        val factionsManager = FactionsManager()
+        factionsManager.addCharacterToFaction(characterA, "faction")
+        factionsManager.addCharacterToFaction(characterB, "faction")
+
+        assertTrue(factionsManager.areAllied(characterA, characterB));
+    }
+
+
+
+
 }
